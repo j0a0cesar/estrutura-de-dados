@@ -91,18 +91,26 @@ void contarNos(No* cabeca){
         cabeca = cabeca->proximo;
         count++;
     }
-    printf("Conatdor de nos: %d",count);
+    printf("\nConatdor de nos: %d",count);
    
 }
 
-void buscarValor(No* cabeca, int pesquisa){
-	int pesquisa;
-	printf("Deseja buscar um valor na fila: ");
-	scanf("%d",%pesquisa);
-	while(cabeca != NULL){
-		
-		
-	}
+void buscarValor(No* cabeca, int pesquisa) {
+    No* atual = cabeca;
+    int encontrado = 0;
+
+    while (atual != NULL) {
+        if (atual->valor == pesquisa) {
+            printf("\nO numero buscado: %d foi encontrado na fila.\n", pesquisa);
+            encontrado = 1;
+            break;
+        }
+        atual = atual->proximo;
+    }
+
+    if (!encontrado) {
+        printf("\nNumero pesquisado %d nao foi encontrado na fila.\n", pesquisa);
+    }
 }
 
 int main() {
@@ -127,6 +135,7 @@ int main() {
 	
 	contarNos(fila);
     
+    buscarValor(&fila,10);
     
     // Liberar memória
     liberarFila(fila);
